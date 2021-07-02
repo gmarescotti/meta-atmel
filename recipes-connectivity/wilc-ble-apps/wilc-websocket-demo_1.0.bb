@@ -12,7 +12,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=e24bfdbf6035afa17b105dc86b249d9f"
 DEPENDS = "nginx"
 SRC_URI = "git://github.com/gmarescotti/websocket-buildroot-external-microchip.git;protocol=https"
 PV = "1.0+git${SRCPV}"
-SRCREV = "dccae5ea9b0710d4331a5a1f9f56764141b99117"
+SRCREV = "12fe6e4cc211576b9d1fe5a02e930cf022720b46"
 
 S = "${WORKDIR}/git"
 
