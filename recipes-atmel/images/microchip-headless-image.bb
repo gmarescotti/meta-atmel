@@ -4,6 +4,8 @@ PR = "r1"
 
 require atmel-demo-image.inc
 
+hostname_pn-base-files = "dkc"
+
 IMAGE_INSTALL += "\
     packagegroup-base-usbhost \
     mpg123 \
