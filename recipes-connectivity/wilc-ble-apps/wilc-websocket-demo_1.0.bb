@@ -28,4 +28,4 @@ do_install () {
 
 FILES_${PN} += "${ROOT_HOME}"
 
-COMPATIBLE_MACHINE = "(at91sam9|sama5)"
+COMPATIBLE_MACHINE = "(at91sam9|sama5|qemux86-64)"

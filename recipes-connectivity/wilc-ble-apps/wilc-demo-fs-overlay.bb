@@ -39,4 +39,5 @@ inherit allarch
 do_compile[noexec] = "1"
 INHIBIT_DEFAULT_DEPS="1"
 
-COMPATIBLE_MACHINE = "(at91sam9|sama5)"
+#COMPATIBLE_MACHINE = "(at91sam9|sama5)"
+COMPATIBLE_MACHINE = "(at91sam9|sama5|qemux86-64)"

@@ -7,7 +7,6 @@ require atmel-demo-image.inc
 hostname_pn-base-files = "dkc"
 
 IMAGE_INSTALL += "\
-    packagegroup-base-usbhost \
     mpg123 \
     mpio \
     "
@@ -27,3 +26,9 @@ IMAGE_INSTALL_append_sama7g5ek-sd = " bonnie++ iozone3 gstreamer1.0 \
 				gstreamer1.0-plugins-bad \
 				gstreamer1.0-plugins-good \
 				gstreamer1.0-plugins-ugly fswebcam ffmpeg "
+
+# Peppo 20211112
+IMAGE_INSTALL_append_qemux86-64 = " nginx \
+				wilc-demo-fs-overlay \
+				wilc-ble-demo \
+				wilc-websocket-demo "
