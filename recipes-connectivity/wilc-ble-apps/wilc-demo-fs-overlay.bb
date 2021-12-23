@@ -27,16 +27,26 @@ S = "${WORKDIR}/git"
 do_install () {
     install -D -m 0755 --target-directory=${D}${ROOT_HOME} ${S}/sama5d27_wlsom1_ek/root/Start_*
     install -d ${D}${datadir}/nginx/html
-    install -D -m 0644 --target-directory=${D}${datadir}/nginx/html/ ${S}/sama5d27_wlsom1_ek/usr/html/*
+    install -d ${D}${datadir}/nginx/html/js
+    install -d ${D}${datadir}/nginx/html/img
+    install -d ${D}${datadir}/nginx/html/css
+    install -D -m 0644 --target-directory=${D}${datadir}/nginx/html/ ${S}/sama5d27_wlsom1_ek/usr/html/*.*
+    install -D -m 0644 --target-directory=${D}${datadir}/nginx/html/js/ ${S}/sama5d27_wlsom1_ek/usr/html/js/*
+    install -D -m 0644 --target-directory=${D}${datadir}/nginx/html/img/ ${S}/sama5d27_wlsom1_ek/usr/html/img/*
+    install -D -m 0644 --target-directory=${D}${datadir}/nginx/html/css/ ${S}/sama5d27_wlsom1_ek/usr/html/css/*
     install -D -m 0644 --target-directory=${D}${sysconfdir}/ ${S}/sama5d27_wlsom1_ek/etc/wilc*
 }
 
 do_install_append() {
-    lnr /home/root/Start_Connection.sh /home/root/Start_Provision.sh
+    # lnr /home/root/Start_Provision.sh /home/root/Start_Connection.sh
+    lnr ${D}${ROOT_HOME}/Start_Provision.sh ${D}${ROOT_HOME}/Start_Connection.sh
 }
 
 FILES_${PN} += "/home/root/*"
 FILES_${PN} += "${datadir}/nginx/html/*"
+FILES_${PN} += "${datadir}/nginx/html/js/*"
+FILES_${PN} += "${datadir}/nginx/html/img/*"
+FILES_${PN} += "${datadir}/nginx/html/css/*"
 FILES_${PN} += "${sysconfdir}/wilc*"
 
 inherit allarch
