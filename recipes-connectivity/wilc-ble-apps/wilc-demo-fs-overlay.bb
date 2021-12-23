@@ -21,7 +21,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=1ebbd3e34237af26da5dc08a4e440464"
 
 SRC_URI = "git://github.com/gmarescotti/linux4sam-wilc-demo-fs-overlay.git;protocol=https"
 PV = "1.0+git${SRCPV}"
-SRCREV = "cad7162a8fd6c5a5b5bb7613964a7c853b96172c"
+SRCREV = "65e27e572cd784e24059542fe80fed700fe23ed1"
 S = "${WORKDIR}/git"
 
 do_install () {
@@ -29,6 +29,10 @@ do_install () {
     install -d ${D}${datadir}/nginx/html
     install -D -m 0644 --target-directory=${D}${datadir}/nginx/html/ ${S}/sama5d27_wlsom1_ek/usr/html/*
     install -D -m 0644 --target-directory=${D}${sysconfdir}/ ${S}/sama5d27_wlsom1_ek/etc/wilc*
+}
+
+do_install_append() {
+    lnr /home/root/Start_Connection.sh /home/root/Start_Provision.sh
 }
 
 FILES_${PN} += "/home/root/*"
