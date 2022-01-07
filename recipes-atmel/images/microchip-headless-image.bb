@@ -20,6 +20,7 @@ IMAGE_INSTALL_append_sama5d2-ptc-ek-sd = " ptc-examples"
 IMAGE_INSTALL_append_sama5d27-wlsom1-ek-sd = " ptc-examples \
 				nginx \
 				serial2mqtt \
+				dkc-colonnina-image \
 				wilc-demo-fs-overlay \
 				wilc-ble-demo \
 				wilc-websocket-demo "
@@ -32,6 +33,7 @@ IMAGE_INSTALL_append_sama7g5ek-sd = " bonnie++ iozone3 gstreamer1.0 \
 # Peppo 20211112
 IMAGE_INSTALL_append_qemux86-64 = " nginx \
 				serial2mqtt \
+				dkc-colonnina-image \
 				wilc-demo-fs-overlay \
 				wilc-ble-demo \
 				wilc-websocket-demo "
