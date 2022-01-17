@@ -21,7 +21,8 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=1ebbd3e34237af26da5dc08a4e440464"
 
 SRC_URI = "git://github.com/gmarescotti/linux4sam-wilc-demo-fs-overlay.git;protocol=https"
 PV = "1.0+git${SRCPV}"
-SRCREV = "65e27e572cd784e24059542fe80fed700fe23ed1"
+# SRCREV = "65e27e572cd784e24059542fe80fed700fe23ed1"
+SRCREV = "9192311f1f707bf0d1153231c095434ea86dc911"
 S = "${WORKDIR}/git"
 
 do_install () {
