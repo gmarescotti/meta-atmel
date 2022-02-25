@@ -21,7 +21,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=1ebbd3e34237af26da5dc08a4e440464"
 
 SRC_URI = "git://github.com/gmarescotti/linux4sam-wilc-demo-fs-overlay.git;protocol=https"
 PV = "1.0+git${SRCPV}"
-SRCREV = "568e0a4a24279a01bd8d9ee56cbf599531619442"
+SRCREV = "8ee6fc9645f7cad0b5ed86dde472eee09442c1a2"
 S = "${WORKDIR}/git"
 
 do_install () {
@@ -55,3 +55,10 @@ INHIBIT_DEFAULT_DEPS="1"
 
 #COMPATIBLE_MACHINE = "(at91sam9|sama5)"
 COMPATIBLE_MACHINE = "(at91sam9|sama5|qemux86-64)"
+
+pkg_postinst_ontarget_${PN}() {
+        # CREA LO SCHEMA DELLE TABELLE IN MARIADB
+        # E LO POPOLA CON DEFAULT (SE VUOTO)
+	mysql -h localhost -u root wallbox < ${D}${datadir}/nginx/html/populate_database.sql
+}
+
