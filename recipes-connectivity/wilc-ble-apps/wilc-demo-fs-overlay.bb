@@ -21,10 +21,11 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=1ebbd3e34237af26da5dc08a4e440464"
 
 SRC_URI = "git://github.com/gmarescotti/linux4sam-wilc-demo-fs-overlay.git;protocol=https"
 PV = "1.0+git${SRCPV}"
-SRCREV = "1edd0643892fd488bc3bf08f37f8db1604b68088"
+SRCREV = "9515a21611740c1cda19098f0f0129fc5e4530d0"
 S = "${WORKDIR}/git"
 
 do_install () {
+    install -D -m 0755 --target-directory=${D}/etc/sudoers.d/ ${S}/sama5d27_wlsom1_ek/etc/sudoers.d/*
     install -D -m 0755 --target-directory=${D}${ROOT_HOME} ${S}/sama5d27_wlsom1_ek/root/Start_*
     install -d ${D}${datadir}/nginx/html
     install -d ${D}${datadir}/nginx/html/js
