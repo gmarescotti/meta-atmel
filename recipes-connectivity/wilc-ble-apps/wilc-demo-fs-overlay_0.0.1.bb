@@ -20,7 +20,7 @@ LICENSE = "GPLv3"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=1ebbd3e34237af26da5dc08a4e440464"
 
 SRC_URI = "git://github.com/gmarescotti/linux4sam-wilc-demo-fs-overlay.git;protocol=https"
-PV = "1.0+git${SRCPV}"
+# PV = "1.0+git${SRCPV}" USE DEFAULT VERSION FROM FILENAME
 SRCREV = "9515a21611740c1cda19098f0f0129fc5e4530d0"
 S = "${WORKDIR}/git"
 
