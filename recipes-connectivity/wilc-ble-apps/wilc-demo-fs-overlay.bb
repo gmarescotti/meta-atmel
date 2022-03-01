@@ -21,7 +21,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=1ebbd3e34237af26da5dc08a4e440464"
 
 SRC_URI = "git://github.com/gmarescotti/linux4sam-wilc-demo-fs-overlay.git;protocol=https"
 PV = "1.0+git${SRCPV}"
-SRCREV = "8ee6fc9645f7cad0b5ed86dde472eee09442c1a2"
+SRCREV = "1edd0643892fd488bc3bf08f37f8db1604b68088"
 S = "${WORKDIR}/git"
 
 do_install () {
@@ -31,6 +31,7 @@ do_install () {
     install -d ${D}${datadir}/nginx/html/img
     install -d ${D}${datadir}/nginx/html/css
     install -D -m 0644 --target-directory=${D}${datadir}/nginx/html/ ${S}/sama5d27_wlsom1_ek/usr/html/*.*
+    install -D -m 0644 --target-directory=${D}${datadir}/nginx/html/cgi-bin/ ${S}/sama5d27_wlsom1_ek/usr/html/cgi-bin/*.*
     install -D -m 0644 --target-directory=${D}${datadir}/nginx/html/js/ ${S}/sama5d27_wlsom1_ek/usr/html/js/*
     install -D -m 0644 --target-directory=${D}${datadir}/nginx/html/img/ ${S}/sama5d27_wlsom1_ek/usr/html/img/*
     install -D -m 0644 --target-directory=${D}${datadir}/nginx/html/css/ ${S}/sama5d27_wlsom1_ek/usr/html/css/*
@@ -59,6 +60,6 @@ COMPATIBLE_MACHINE = "(at91sam9|sama5|qemux86-64)"
 pkg_postinst_ontarget_${PN}() {
         # CREA LO SCHEMA DELLE TABELLE IN MARIADB
         # E LO POPOLA CON DEFAULT (SE VUOTO)
-	mysql -h localhost -u root wallbox < ${D}${datadir}/nginx/html/populate_database.sql
+	mysql -h localhost -u root wallbox < ${datadir}/nginx/html/populate_database.sql
 }
 
