@@ -19,6 +19,8 @@ SECTION = "net"
 LICENSE = "GPLv3"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=1ebbd3e34237af26da5dc08a4e440464"
 
+DEPENDS = "mariadb"
+
 SRC_URI = "git://github.com/gmarescotti/linux4sam-wilc-demo-fs-overlay.git;protocol=https"
 # PV = "1.0+git${SRCPV}" USE DEFAULT VERSION FROM FILENAME
 SRCREV = "0f97b9e6c1b75cf1bb712e4034503bb05ccecf86"
@@ -61,6 +63,7 @@ COMPATIBLE_MACHINE = "(at91sam9|sama5|qemux86-64)"
 pkg_postinst_ontarget_${PN}() {
         # CREA LO SCHEMA DELLE TABELLE IN MARIADB
         # E LO POPOLA CON DEFAULT (SE VUOTO)
+        mysql -h localhost -u root -e "CREATE DATABASE IF NOT EXISTS wallbox"
 	mysql -h localhost -u root wallbox < ${datadir}/nginx/html/populate_database.sql
 }
 
