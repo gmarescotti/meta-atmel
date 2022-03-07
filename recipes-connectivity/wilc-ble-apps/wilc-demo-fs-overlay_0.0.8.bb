@@ -65,6 +65,6 @@ COMPATIBLE_MACHINE = "(at91sam9|sama5|qemux86-64)"
 pkg_postinst_ontarget_${PN}() {
         # CREA LO SCHEMA DELLE TABELLE IN MARIADB
         # E LO POPOLA CON DEFAULT (SE VUOTO)
-	mysql -t -h localhost -u root < ${datadir}/nginx/html/populate_database.sql
+	mysql -h localhost -u root < ${datadir}/nginx/html/populate_database.sql
 }
 
