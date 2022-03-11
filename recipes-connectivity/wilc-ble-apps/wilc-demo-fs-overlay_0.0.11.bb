@@ -20,6 +20,7 @@ LICENSE = "GPLv3"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=1ebbd3e34237af26da5dc08a4e440464"
 
 DEPENDS = "mariadb"
+RDEPENDS_${PN} = "mariadb-server"
 
 SRC_URI = "git://github.com/gmarescotti/linux4sam-wilc-demo-fs-overlay.git;protocol=https"
 # PV = "1.0+git${SRCPV}" USE DEFAULT VERSION FROM FILENAME
