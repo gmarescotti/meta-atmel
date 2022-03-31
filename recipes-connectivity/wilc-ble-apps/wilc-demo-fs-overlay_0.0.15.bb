@@ -24,7 +24,7 @@ RDEPENDS_${PN} = "mariadb-server"
 
 SRC_URI = "git://github.com/gmarescotti/linux4sam-wilc-demo-fs-overlay.git;protocol=https"
 # PV = "1.0+git${SRCPV}" USE DEFAULT VERSION FROM FILENAME
-SRCREV = "a00b9ab7883eb0c2302289fea6bdb44ea6abbce2"
+SRCREV = "21322d248d6ba39bbc1d2ce26fce7b75891c428f"
 S = "${WORKDIR}/git"
 
 do_install () {
