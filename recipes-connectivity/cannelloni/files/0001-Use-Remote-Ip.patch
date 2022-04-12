@@ -1,0 +1,50 @@
+diff --git a/cannelloni.cpp b/cannelloni.cpp
+index 212c9ee..31d8fcf 100644
+--- a/cannelloni.cpp
++++ b/cannelloni.cpp
+@@ -77,20 +77,20 @@ void printUsage() {
+   std::cout << "\t\t\t b : enable debugging of internal buffer structures" << std::endl;
+   std::cout << "\t\t\t t : enable debugging of internal timers" << std::endl;
+   std::cout << "\t -h      \t\t display this help text" << std::endl;
+-  std::cout << "Mandatory options:" << std::endl;
+-  std::cout << "\t -R IP   \t\t remote IP" << std::endl;
++  // std::cout << "Mandatory options:" << std::endl;
++  std::cout << "\t -R IP   \t\t remote IP [default to any]" << std::endl;
+ }
+
+ int main(int argc, char** argv) {
+   int opt;
+-  bool remoteIPSupplied = false;
++  bool remoteIPSupplied = true; // no more needed (use any when not specified)
+   bool sortUDP = false;
+   bool checkPeer = true;
+   bool useSCTP = false;
+ #ifdef SCTP_SUPPORT
+   SCTPThreadRole sctpRole = CLIENT;
+ #endif
+-  char remoteIP[INET_ADDRSTRLEN] = "127.0.0.1";
++  char remoteIP[INET_ADDRSTRLEN] = "0.0.0.0"; // was 127.0.0.1 now any
+   uint16_t remotePort = 20000;
+   char localIP[INET_ADDRSTRLEN] = "0.0.0.0";
+   uint16_t localPort = 20000;
+diff --git a/udpthread.cpp b/udpthread.cpp
+index faa3eca..2ad2419 100644
+--- a/udpthread.cpp
++++ b/udpthread.cpp
+@@ -106,6 +106,16 @@ bool UDPThread::parsePacket(uint8_t *buffer, uint16_t len, struct sockaddr_in &c
+             << ", which is not set as a remote. Restart with -p argument to override." << std::endl;
+     } else {
+
++        // If remote is any, and checkpeer is false =>
++        //  Change remote address to client address!
++        if ((m_remoteAddr.sin_addr.s_addr == htonl(INADDR_ANY)) && (clientAddr.sin_addr.s_addr != htonl(INADDR_LOOPBACK))) {
++            memcpy(&(m_remoteAddr.sin_addr), &(clientAddr.sin_addr), sizeof(struct in_addr));
++            linfo << "Received a packet from " << clientAddrStr
++                << ", which is not set as a remote. From now on use it." << std::endl;
++        } else {
++            linfo << "Received a packet from " << clientAddrStr << std::endl;
++        }
++
+         if (m_debugOptions.udp) {
+             linfo << "Received " << std::dec << len << " Bytes from Host " << clientAddrStr
+                     << ":" << ntohs(clientAddr.sin_port) << std::endl;
