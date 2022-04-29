@@ -22,9 +22,11 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=1ebbd3e34237af26da5dc08a4e440464"
 DEPENDS = "mariadb"
 RDEPENDS_${PN} = "mariadb-server"
 
+PR="r3"
+
 SRC_URI = "git://github.com/gmarescotti/linux4sam-wilc-demo-fs-overlay.git;protocol=https"
 # PV = "1.0+git${SRCPV}" USE DEFAULT VERSION FROM FILENAME
-SRCREV = "855f440592f73d6849dc208d164bcd907e2fb662"
+SRCREV = "59b899431597ad946612136f7688667a872591e8"
 S = "${WORKDIR}/git"
 
 do_install () {
