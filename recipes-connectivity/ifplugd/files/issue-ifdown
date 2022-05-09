@@ -1,0 +1,7 @@
+#!/bin/sh
+
+wall $(env)
+wall  $IFACE
+
+issue_command 7003 0
+
