@@ -22,11 +22,11 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=1ebbd3e34237af26da5dc08a4e440464"
 DEPENDS = "mariadb"
 RDEPENDS_${PN} = "mariadb-server"
 
-PR="r8"
+PR="r11"
 
 SRC_URI = "git://github.com/gmarescotti/linux4sam-wilc-demo-fs-overlay.git;protocol=https"
 # PV = "1.0+git${SRCPV}" USE DEFAULT VERSION FROM FILENAME
-SRCREV = "4e78fd935eb85444d14d8bb3503cf275064bf376"
+SRCREV = "564894c2181e71ba384d94a7f7d73e48e5487a3a"
 S = "${WORKDIR}/git"
 
 do_install () {
@@ -43,11 +43,6 @@ do_install () {
     install -D -m 0644 --target-directory=${D}${datadir}/nginx/html/img/ ${S}/sama5d27_wlsom1_ek/usr/html/img/*
     install -D -m 0644 --target-directory=${D}${datadir}/nginx/html/css/ ${S}/sama5d27_wlsom1_ek/usr/html/css/*
     install -D -m 0644 --target-directory=${D}${sysconfdir}/ ${S}/sama5d27_wlsom1_ek/etc/wilc*
-}
-
-do_install_append() {
-    # lnr /home/root/Start_Provision.sh /home/root/Start_Connection.sh
-    lnr ${D}${ROOT_HOME}/Start_Provision.sh ${D}${ROOT_HOME}/Start_Connection.sh
 }
 
 FILES_${PN} += "/home/root/*"

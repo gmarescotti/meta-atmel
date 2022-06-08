@@ -1,6 +1,7 @@
 
-PR = "r1"
+PR = "r2"
 
-do_install_append () {
-	echo "src snapshots https://data.madein.it/sftp/uploads/Release_0.0.2" >>${D}${sysconfdir}/opkg/opkg.conf
+do_install_append-target () {
+	VERSION=$(awk -F "=" '/DKC_DISTRO_VERSION/ {print $2}' /etc/build)
+	echo "src snapshots https://data.madein.it/sftp/uploads/Release_$VERSION" >>${D}${sysconfdir}/opkg/opkg.conf
 }
