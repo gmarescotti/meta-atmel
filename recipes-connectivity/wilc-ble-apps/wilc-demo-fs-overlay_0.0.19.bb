@@ -22,11 +22,11 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=1ebbd3e34237af26da5dc08a4e440464"
 DEPENDS = "mariadb"
 RDEPENDS_${PN} = "mariadb-server"
 
-PR="r11"
+PR="r14"
 
 SRC_URI = "git://github.com/gmarescotti/linux4sam-wilc-demo-fs-overlay.git;protocol=https"
 # PV = "1.0+git${SRCPV}" USE DEFAULT VERSION FROM FILENAME
-SRCREV = "564894c2181e71ba384d94a7f7d73e48e5487a3a"
+SRCREV = "89128392d334912b4eb10aa3bf884520338723ba"
 S = "${WORKDIR}/git"
 
 do_install () {
@@ -59,12 +59,4 @@ INHIBIT_DEFAULT_DEPS="1"
 
 #COMPATIBLE_MACHINE = "(at91sam9|sama5)"
 COMPATIBLE_MACHINE = "(at91sam9|sama5|qemux86-64)"
-
-pkg_postinst_ontarget_${PN}() {
-        # CREA LO SCHEMA DELLE TABELLE IN MARIADB
-        # E LO POPOLA CON DEFAULT (SE VUOTO)
-	mysql -h localhost -u root -e "kill USER root;"
-	mysql -h localhost -u root < ${datadir}/nginx/html/populate_database.sql
-	mysql -h localhost -u root < ${datadir}/nginx/html/populate_configurations.sql
-}
 
