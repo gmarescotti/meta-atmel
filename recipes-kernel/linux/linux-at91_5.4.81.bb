@@ -12,14 +12,15 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${P}:"
 #SRCREV = "3dba8c9991d2466eb5e9398de22fa7f28accee83"
 #SRCREV = "8e4df35434d241f6e3a0a232754df5cc5fa5f601"
 #SRCREV = "cb388a9aa5cc5a1145fd0a1449c9e0cce87c4c17"
-SRCREV = "87643a7a0f45005265b921f91fce5fc7ee3b63b9"
+# rgm1 => SRCREV = "87643a7a0f45005265b921f91fce5fc7ee3b63b9"
+SRCREV = "512fbc7cb24608745ac8d469e9afecd5f2159473"
 SRCREV_sama7g5ek = "d67f0979dcc377863060e803a2280b7a7e1a22c0"
 
 PV = "5.4+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 
-KBRANCH = "linux-5.4-at91-rgm"
+KBRANCH = "linux-5.4-at91-rgm2"
 KBRANCH_sama7g5ek-sd = "sama7g5_early"
 KBRANCH_sama7g5ek-emmc = "sama7g5_early"
 # SRC_URI = "git://github.com/linux4sam/linux-at91.git;protocol=git;branch=${KBRANCH}"
