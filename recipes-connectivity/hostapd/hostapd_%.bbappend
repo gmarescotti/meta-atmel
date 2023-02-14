@@ -1,7 +1,7 @@
 # Extend the base recipe search path to $HERE/files
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
-PR="r3"
+PR="r4"
 
 SRC_URI += "file://hostapd.conf"
 
@@ -11,7 +11,7 @@ do_install_append() {
 
 pkg_postinst_ontarget_${PN} () {
 	LAST3MAC=$(cat /sys/class/net/eth0/address | awk -F: '{print $4$5$6}')
-	sed -i "s/ssid=DKC_WALLBOX_.*$/ssid=DKC_WALLBOX_${LAST3MAC^^}/" /etc/hostapd.conf
+	sed -i "s/ssid=.*/ssid=ECharger_WiFi_${LAST3MAC^^}/" /etc/hostapd.conf
 
 	## Questo script qui sotto non funziona perche':
 	##  - wilc_sdio fallisce (qualche volta)
